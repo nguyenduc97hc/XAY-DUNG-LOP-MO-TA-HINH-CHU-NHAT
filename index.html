@@ -8,21 +8,29 @@
 <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
     </canvas>
     <script>
+        let Rectangle = new rectangle(60,40);
+
         function rectangle(a,b) {
             this.a = a;
             this.b = b;
+            this.getArea = function () {
+                return this.a*this.b;
+            };
+            this.getRec = function () {
+                return 2*(this.a+this.b);
+            };
+            this.createRectangle =function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.fillStyle = "#FF0000";
+                ctx.fillRect(20, 20, this.a, this.b);
+            }
         }
-        function createRectangle() {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-            let Rectangle = new rectangle(60,40);
-            let area = Rectangle.a*Rectangle.b;
-            let rec = 2*(Rectangle.a+Rectangle.b)
-            ctx.fillRect(20, 20, Rectangle.a, Rectangle.b);
-            document.write("<br/>"+ "dien tichla " +area+"<br/>");
-            document.write("chu vi la " +rec);
-        }
-        createRectangle();
+
+
+        alert("Dien tich:"+Rectangle.getArea()+" Chu vi:"+Rectangle.getRec());
+        Rectangle.createRectangle();
+
     </script>
 </body>
 </html>
